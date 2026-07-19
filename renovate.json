@@ -1,0 +1,18 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["/^pb/install\\.sh$/"],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)\\s*\\nPB_VERSION=\"(?<currentValue>.*)\""
+      ]
+    }
+  ],
+  "packageRules": [
+    { "matchManagers": ["regex"], "matchDepNames": ["pocketbase/pocketbase"], "automerge": false, "labels": ["pocketbase-update"] },
+    { "matchUpdateTypes": ["minor", "patch"], "matchManagers": ["npm"], "automerge": true },
+    { "matchUpdateTypes": ["major"], "automerge": false }
+  ]
+}
