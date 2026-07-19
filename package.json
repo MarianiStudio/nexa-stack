@@ -3,10 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "concurrently \"pnpm run dev:next\" \"pnpm run dev:pb\"",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "dev:next": "next dev",
+    "dev:pb": "cd pb && ./pocketbase serve --http=127.0.0.1:8090",
+    "pb:migrate": "cd pb && ./pocketbase migrate",
+    "pb:admin": "cd pb && ./pocketbase superuser upsert $PB_ADMIN_EMAIL $PB_ADMIN_PASSWORD"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
@@ -25,6 +29,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "concurrently": "^10.0.3",
     "eslint": "^9",
     "eslint-config-next": "16.2.10",
     "tailwindcss": "^4",

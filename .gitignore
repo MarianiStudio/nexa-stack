@@ -10,6 +10,12 @@
 !.yarn/releases
 !.yarn/versions
 
+# PocketBase
+pb/pocketbase
+pb/pb_data/
+pb/std.log
+
+
 # testing
 /coverage
 
