@@ -2,7 +2,7 @@
 set -e
 
 # renovate: datasource=github-releases depName=pocketbase/pocketbase
-PB_VERSION="0.39.7"
+PB_VERSION="0.39.8"
 
 TARGET_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 BINARY_NAME="pocketbase"
