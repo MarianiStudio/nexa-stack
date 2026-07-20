@@ -1,0 +1,48 @@
+name: ci
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: pnpm/action-setup@v4
+      
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+          
+      - name: Installer les dépendances
+        run: pnpm install --frozen-lockfile
+        
+      - name: Compiler le projet
+        run: pnpm build
+        
+      - name: Vérifier le démarrage de PocketBase
+        run: |
+          chmod +x pb/install.sh
+          ./pb/install.sh
+          
+          # Démarrage de PocketBase en arrière-plan
+          ./pb/pocketbase serve --http=127.0.0.1:8090 &
+          PB_PID=$! # Enregistre l'identifiant du processus
+          
+          # Attente active du démarrage (max 10 secondes)
+          for i in {1..10}; do
+            if curl -sf http://127.0.0.1:8090/api/health > /dev/null 2>&1; then
+              echo "✅ PocketBase a démarré avec succès !"
+              kill $PB_PID # Arrêt propre du démon
+              exit 0
+            fi
+            echo "Attente de PocketBase (tentative $i/10)..."
+            sleep 1
+          done
+          
+          echo "❌ Échec : PocketBase n'a pas répondu dans le délai imparti."
+          kill $PB_PID 2>/dev/null || true
+          exit 1
