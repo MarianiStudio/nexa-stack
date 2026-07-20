@@ -1,4 +1,5 @@
 allowBuilds:
+  isolated-vm: true
   sharp: true
   unrs-resolver: true
 ignoredBuiltDependencies:

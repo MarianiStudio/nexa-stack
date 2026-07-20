@@ -15,6 +15,11 @@ pb/pocketbase
 pb/pb_data/
 pb/std.log
 
+# Cache temporaire de synchronisation des docs
+scripts/docs-sync/.cache/
+
+# Contenu de documentation locale (généré à la demande par pnpm docs:sync)
+library/
 
 # testing
 /coverage
