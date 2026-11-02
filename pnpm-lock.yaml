@@ -68,7 +68,7 @@ importers:
         version: 16.4.2(@typescript-eslint/parser@8.64.0(eslint@9.39.5(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@5.9.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@5.9.3)
       isolated-vm:
         specifier: ^7.0.0
-        version: 7.0.1
+        version: 7.0.2
       jsdom:
         specifier: ^29.1.1
         version: 29.1.1
@@ -1961,8 +1961,8 @@ packages:
     resolution: {integrity: sha512-6B3tLtFqtQS4ekarvLVMZ+X+VlvQekbe4taUkf/rhVO3d/h0M2rfARm/pXLcPEsjjMsFgrFgSrhQIxcSVrBz8w==}
     engines: {node: '>=18'}
 
-  isolated-vm@7.0.1:
-    resolution: {integrity: sha512-nBCQ1hXEaYKYJ79wwfhaF44ITOJC30Hw0wPEsFeNsdD3hdeKK7FW1SGMQYBUA+qasvkqdOazI+iBuq0lcbN/aw==}
+  isolated-vm@7.0.2:
+    resolution: {integrity: sha512-Z1sYxpptGyGiKblG16EJEdP5x9/68C6AuqFFsewnrxlwSlrTLHKqtRMogOjcYZ0f8/cijMaRi+XwiHVQ1+uG+g==}
     engines: {node: '>=24.0.0'}
 
   iterator.prototype@1.1.5:
@@ -4936,7 +4936,7 @@ snapshots:
 
   isexe@3.1.5: {}
 
-  isolated-vm@7.0.1:
+  isolated-vm@7.0.2:
     dependencies:
       node-gyp-build: 4.8.4
 
